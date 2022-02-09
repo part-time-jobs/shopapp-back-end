@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carl.mapper.OrderinfoDao">
+  <resultMap id="BaseResultMap" type="com.carl.entity.pojo.Orderinfo">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="OrderNo" jdbcType="VARCHAR" property="orderno" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="BuyUser" jdbcType="VARCHAR" property="buyuser" />
+    <result column="BuyPhone" jdbcType="VARCHAR" property="buyphone" />
+    <result column="BuyAddr" jdbcType="VARCHAR" property="buyaddr" />
+    <result column="GoodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="GoodsNo" jdbcType="VARCHAR" property="goodsno" />
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="Num" jdbcType="INTEGER" property="num" />
+    <result column="AmountTotal" jdbcType="DECIMAL" property="amounttotal" />
+    <result column="Discount" jdbcType="DECIMAL" property="discount" />
+    <result column="RealAmountTotal" jdbcType="DECIMAL" property="realamounttotal" />
+    <result column="ShopId" jdbcType="INTEGER" property="shopid" />
+    <result column="ShopName" jdbcType="VARCHAR" property="shopname" />
+    <result column="ShopPhone" jdbcType="VARCHAR" property="shopphone" />
+    <result column="ShopAddr" jdbcType="VARCHAR" property="shopaddr" />
+    <result column="DataStatus" jdbcType="INTEGER" property="datastatus" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="UpdateDate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="OrderStatus" jdbcType="INTEGER" property="orderstatus" />
+    <result column="GoodsSpecId" jdbcType="INTEGER" property="goodsspecid" />
+    <result column="GoodsSpecName" jdbcType="VARCHAR" property="goodsspecname" />
+    <result column="Price" jdbcType="DECIMAL" property="price" />
+    <result column="CostPrice" jdbcType="DECIMAL" property="costprice" />
+    <result column="DeliverType" jdbcType="INTEGER" property="delivertype" />
+    <result column="PayType" jdbcType="VARCHAR" property="paytype" />
+    <result column="FlowNo" jdbcType="VARCHAR" property="flowno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, OrderNo, UserId, BuyUser, BuyPhone, BuyAddr, GoodsId, GoodsNo, GoodsName, Num,
+    AmountTotal, Discount, RealAmountTotal, ShopId, ShopName, ShopPhone, ShopAddr, DataStatus,
+    CreateDate, UpdateDate, OrderStatus, GoodsSpecId, GoodsSpecName, Price, CostPrice,
+    DeliverType, PayType, FlowNo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.carl.entity.pojo.Orderinfo" useGeneratedKeys="true">
+    insert into orderinfo (OrderNo, UserId, BuyUser, 
+      BuyPhone, BuyAddr, GoodsId, 
+      GoodsNo, GoodsName, Num, 
+      AmountTotal, Discount, RealAmountTotal, 
+      ShopId, ShopName, ShopPhone, 
+      ShopAddr, DataStatus, CreateDate, 
+      UpdateDate, OrderStatus, GoodsSpecId, 
+      GoodsSpecName, Price, CostPrice, 
+      DeliverType, PayType, FlowNo
+      )
+    values (#{orderno,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{buyuser,jdbcType=VARCHAR}, 
+      #{buyphone,jdbcType=VARCHAR}, #{buyaddr,jdbcType=VARCHAR}, #{goodsid,jdbcType=INTEGER}, 
+      #{goodsno,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{amounttotal,jdbcType=DECIMAL}, #{discount,jdbcType=DECIMAL}, #{realamounttotal,jdbcType=DECIMAL}, 
+      #{shopid,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR}, #{shopphone,jdbcType=VARCHAR}, 
+      #{shopaddr,jdbcType=VARCHAR}, #{datastatus,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{orderstatus,jdbcType=INTEGER}, #{goodsspecid,jdbcType=INTEGER}, 
+      #{goodsspecname,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{costprice,jdbcType=DECIMAL}, 
+      #{delivertype,jdbcType=INTEGER}, #{paytype,jdbcType=VARCHAR}, #{flowno,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.carl.entity.pojo.Orderinfo" useGeneratedKeys="true">
+    insert into orderinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        OrderNo,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="buyuser != null">
+        BuyUser,
+      </if>
+      <if test="buyphone != null">
+        BuyPhone,
+      </if>
+      <if test="buyaddr != null">
+        BuyAddr,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="goodsno != null">
+        GoodsNo,
+      </if>
+      <if test="goodsname != null">
+        GoodsName,
+      </if>
+      <if test="num != null">
+        Num,
+      </if>
+      <if test="amounttotal != null">
+        AmountTotal,
+      </if>
+      <if test="discount != null">
+        Discount,
+      </if>
+      <if test="realamounttotal != null">
+        RealAmountTotal,
+      </if>
+      <if test="shopid != null">
+        ShopId,
+      </if>
+      <if test="shopname != null">
+        ShopName,
+      </if>
+      <if test="shopphone != null">
+        ShopPhone,
+      </if>
+      <if test="shopaddr != null">
+        ShopAddr,
+      </if>
+      <if test="datastatus != null">
+        DataStatus,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="updatedate != null">
+        UpdateDate,
+      </if>
+      <if test="orderstatus != null">
+        OrderStatus,
+      </if>
+      <if test="goodsspecid != null">
+        GoodsSpecId,
+      </if>
+      <if test="goodsspecname != null">
+        GoodsSpecName,
+      </if>
+      <if test="price != null">
+        Price,
+      </if>
+      <if test="costprice != null">
+        CostPrice,
+      </if>
+      <if test="delivertype != null">
+        DeliverType,
+      </if>
+      <if test="paytype != null">
+        PayType,
+      </if>
+      <if test="flowno != null">
+        FlowNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="buyuser != null">
+        #{buyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="buyphone != null">
+        #{buyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyaddr != null">
+        #{buyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsno != null">
+        #{goodsno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="amounttotal != null">
+        #{amounttotal,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="realamounttotal != null">
+        #{realamounttotal,jdbcType=DECIMAL},
+      </if>
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopphone != null">
+        #{shopphone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopaddr != null">
+        #{shopaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="datastatus != null">
+        #{datastatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="goodsspecid != null">
+        #{goodsspecid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsspecname != null">
+        #{goodsspecname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="costprice != null">
+        #{costprice,jdbcType=DECIMAL},
+      </if>
+      <if test="delivertype != null">
+        #{delivertype,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowno != null">
+        #{flowno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.carl.entity.pojo.Orderinfo">
+    update orderinfo
+    <set>
+      <if test="orderno != null">
+        OrderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="buyuser != null">
+        BuyUser = #{buyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="buyphone != null">
+        BuyPhone = #{buyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyaddr != null">
+        BuyAddr = #{buyaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsno != null">
+        GoodsNo = #{goodsno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        GoodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        Num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="amounttotal != null">
+        AmountTotal = #{amounttotal,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        Discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="realamounttotal != null">
+        RealAmountTotal = #{realamounttotal,jdbcType=DECIMAL},
+      </if>
+      <if test="shopid != null">
+        ShopId = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        ShopName = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopphone != null">
+        ShopPhone = #{shopphone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopaddr != null">
+        ShopAddr = #{shopaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="datastatus != null">
+        DataStatus = #{datastatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null">
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderstatus != null">
+        OrderStatus = #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="goodsspecid != null">
+        GoodsSpecId = #{goodsspecid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsspecname != null">
+        GoodsSpecName = #{goodsspecname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        Price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="costprice != null">
+        CostPrice = #{costprice,jdbcType=DECIMAL},
+      </if>
+      <if test="delivertype != null">
+        DeliverType = #{delivertype,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        PayType = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowno != null">
+        FlowNo = #{flowno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.carl.entity.pojo.Orderinfo">
+    update orderinfo
+    set OrderNo = #{orderno,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      BuyUser = #{buyuser,jdbcType=VARCHAR},
+      BuyPhone = #{buyphone,jdbcType=VARCHAR},
+      BuyAddr = #{buyaddr,jdbcType=VARCHAR},
+      GoodsId = #{goodsid,jdbcType=INTEGER},
+      GoodsNo = #{goodsno,jdbcType=VARCHAR},
+      GoodsName = #{goodsname,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=INTEGER},
+      AmountTotal = #{amounttotal,jdbcType=DECIMAL},
+      Discount = #{discount,jdbcType=DECIMAL},
+      RealAmountTotal = #{realamounttotal,jdbcType=DECIMAL},
+      ShopId = #{shopid,jdbcType=INTEGER},
+      ShopName = #{shopname,jdbcType=VARCHAR},
+      ShopPhone = #{shopphone,jdbcType=VARCHAR},
+      ShopAddr = #{shopaddr,jdbcType=VARCHAR},
+      DataStatus = #{datastatus,jdbcType=INTEGER},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      OrderStatus = #{orderstatus,jdbcType=INTEGER},
+      GoodsSpecId = #{goodsspecid,jdbcType=INTEGER},
+      GoodsSpecName = #{goodsspecname,jdbcType=VARCHAR},
+      Price = #{price,jdbcType=DECIMAL},
+      CostPrice = #{costprice,jdbcType=DECIMAL},
+      DeliverType = #{delivertype,jdbcType=INTEGER},
+      PayType = #{paytype,jdbcType=VARCHAR},
+      FlowNo = #{flowno,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
